@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:05 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:35:40 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:48:13 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void		*ft_memcpy(void *dest, const void *src, size_t n)
+void			*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*dptr;
 	unsigned char	*sptr;

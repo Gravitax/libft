@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:19:56 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/10 15:08:24 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:48:39 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void		ft_putnbr(int n)
+void			ft_putnbr(int n)
 {
 	ft_putnbr_fd(n, 1);
 }

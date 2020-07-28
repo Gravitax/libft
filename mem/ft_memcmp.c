@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:02 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:10:27 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:48:10 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int			ft_memcmp(const void *s1, const void *s2, size_t n)
+int				ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	unsigned char	*s1_tmp;
 	unsigned char	*s2_tmp;

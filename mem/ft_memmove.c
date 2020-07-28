@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:08 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:37:01 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:48:20 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void		*ft_memmove(void *dest, const void *src, size_t len)
+void			*ft_memmove(void *dest, const void *src, size_t len)
 {
 	int		i;
 

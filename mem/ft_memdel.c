@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:36:53 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/03 16:39:15 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:48:16 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void		ft_memdel(void **ptr)
+void			ft_memdel(void **ptr)
 {
 	if (!ptr || !*ptr)
 		return ;
