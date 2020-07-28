@@ -6,13 +6,14 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:28:45 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:11:31 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:28:15 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdbool.h>
 # include <stdlib.h>
 
 # define BUFF_SIZE 4096
@@ -23,7 +24,7 @@ typedef union	u_rsqrt
 	uint32_t	i;
 }				t_rsqrt;
 
-float			rsqrt(float number);
+float			ft_rsqrt(float number);
 
 int				ft_abs(int nb);
 long			ft_atoi_base(const char *str, unsigned int base);

@@ -6,11 +6,11 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:05 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/03 16:39:06 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:35:40 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include <stdlib.h>
 
 void		*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -18,7 +18,7 @@ void		*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*sptr;
 
 	if (!dest || !src)
-		return ((void *)0);
+		return (NULL);
 	dptr = (unsigned char *)dest;
 	sptr = (unsigned char *)src;
 	while (n--)

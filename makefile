@@ -6,7 +6,7 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 11:17:40 by maboye            #+#    #+#              #
-#    Updated: 2019/07/31 11:57:08 by maboye           ###   ########.fr        #
+#    Updated: 2020/07/28 17:24:59 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ D_TAB	=	./tab
 #SRC LIST
 S_MATHS	=	ft_isprime.c\
 			ft_power.c\
+			ft_rsqrt.c\
 			ft_sqrt.c
 
 S_MEM	=	ft_memalloc.c\
@@ -43,11 +44,6 @@ S_PRINT	=	ft_printf.c\
 			ft_putnbr_fd.c\
 			ft_putstr.c\
 			ft_putstr_fd.c\
-			my_printf.c\
-			my_putchar_fd.c\
-			my_putendl_fd.c\
-			my_putnbr_fd.c\
-			my_putstr_fd.c
 
 S_STR	=	ft_abs.c\
 			ft_atoi_base.c\
