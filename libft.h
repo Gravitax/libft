@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:28:45 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:28:15 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:45:27 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,30 @@ typedef union	u_rsqrt
 	uint32_t	i;
 }				t_rsqrt;
 
+bool			ft_isprime(int nb);
+float			ft_power(int nb, int po);
 float			ft_rsqrt(float number);
+float			ft_sqrt(float nb);
+
+void			*ft_memalloc(size_t size);
+void			*ft_memchr(const void *s, int c, size_t n);
+int				ft_memcmp(const void *s1, const void *s2, size_t n);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
+void			ft_memdel(void **ptr);
+void			*ft_memmove(void *dest, const void *src, size_t n);
+void			*ft_memset(void *s, int c, size_t n);
+
+void			ft_printf(int fd, const char *str, ...);
+void			ft_putchar(char c);
+void			ft_putchar_fd(char c, int fd);
+void			ft_putendl(char const *s);
+void			ft_putendl_fd(char const *s, int fd);
+void			ft_putnbr(int n);
+void			ft_putnbr_fd(int n, int fd);
+void			ft_putstr(char const *s);
+void			ft_putstr_fd(char const *s, int fd);
+
+// NOT DONE BELOW
 
 int				ft_abs(int nb);
 long			ft_atoi_base(const char *str, unsigned int base);
@@ -38,39 +61,15 @@ int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_ishexa(int c);
 int				ft_islower(int c);
-bool			ft_isprime(int nb);
 int				ft_isprint(int c);
 int				ft_isspace(int c);
 int				ft_isupper(int c);
 
 char			*ft_itoa(int n);
 
-void			*ft_memalloc(size_t size);
-void			*ft_memcpy(void *dest, const void *src, size_t n);
-void			*ft_memchr(const void *s, int c, size_t n);
-int				ft_memcmp(const void *s1, const void *s2, size_t n);
-void			ft_memdel(void **ptr);
-void			*ft_memmove(void *dest, const void *src, size_t n);
-void			*ft_memset(void *s, int c, size_t n);
-
-float			ft_power(int nb, int po);
-
-void			ft_print_tab(char **str);
-void			ft_printf(int fd, const char *str, ...);
-void			ft_putchar(char c);
-void			ft_putchar_fd(char c, int fd);
-void			ft_putendl(char const *s);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putnbr(int n);
-void			ft_putnbr_fd(int n, int fd);
-void			ft_putstr(char const *s);
-void			ft_putstr_fd(char const *s, int fd);
-
 char			*ft_readfile(char *file);
 void			*ft_realloc(void *ptr, size_t new_size);
 char			**ft_splitwspc(const char *str);
-
-float			ft_sqrt(float nb);
 
 char			*ft_strcat(char *dest, const char *src);
 char			*ft_strchr(const char *str, int c);
@@ -95,6 +94,7 @@ char			*ft_strtrim(char const *s);
 
 void			ft_swap(void **s1, void **s2);
 
+void			ft_print_tab(char **str);
 char			**ft_tabaddelem(char **add, const char *str);
 char			**ft_tabat(const char *add, unsigned int index);
 char			**ft_tabdup(const char **add);

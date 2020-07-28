@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:19:39 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/03 16:42:12 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:41:10 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void		ft_putchar(char c)
+void			ft_putchar(char c)
 {
 	write(1, &c, sizeof(c));
 }

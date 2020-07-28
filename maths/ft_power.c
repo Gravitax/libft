@@ -6,11 +6,11 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 22:52:22 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/03 16:41:05 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:44:50 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float		ft_power(int nb, int po)
+float			ft_power(int nb, int po)
 {
 	float		result;
 

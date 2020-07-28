@@ -6,14 +6,14 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 05:07:59 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:16:50 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:41:06 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "../libft.h"
 
-void				ft_printf(int fd, const char *str, ...)
+void			ft_printf(int fd, const char *str, ...)
 {
 	va_list	args;
 
