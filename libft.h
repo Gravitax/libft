@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:28:45 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/13 13:43:35 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:11:31 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,38 @@
 
 # define BUFF_SIZE 4096
 
-typedef struct	s_list
+typedef union	u_rsqrt
 {
-	struct s_list	*prev;
-	struct s_list	*next;
-}				t_list;
+	float		f;
+	uint32_t	i;
+}				t_rsqrt;
 
+float			rsqrt(float number);
+
+int				ft_abs(int nb);
+long			ft_atoi_base(const char *str, unsigned int base);
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
-void			ft_bubblesort(void **add, int (*f)());
 
 int				ft_intlen(int nb);
 
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
+int				ft_ishexa(int c);
 int				ft_islower(int c);
-int				ft_isprime(int nb);
+bool			ft_isprime(int nb);
 int				ft_isprint(int c);
 int				ft_isspace(int c);
 int				ft_isupper(int c);
 
 char			*ft_itoa(int n);
 
-void			ft_lstaddback(t_list **list, t_list *prev, t_list *next);
-t_list			*ft_lstaddelem(t_list *prev, t_list *next);
-void			ft_lstaddfront(t_list **list, t_list *prev, t_list *next);
-t_list			*ft_lstat(t_list *begin_list, unsigned int nbr);
-void			ft_lstdel(t_list **list);
-void			ft_lstmerge(t_list **list1, t_list *list2);
-size_t			ft_lstsize(t_list *list);
-
 void			*ft_memalloc(size_t size);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
-void			*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
-void			ft_memdel(void **ap);
+void			ft_memdel(void **ptr);
 void			*ft_memmove(void *dest, const void *src, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
 
@@ -70,20 +65,18 @@ void			ft_putnbr_fd(int n, int fd);
 void			ft_putstr(char const *s);
 void			ft_putstr_fd(char const *s, int fd);
 
-int				ft_quicksort(void **add, int start, int size, int (*f)());
-
 char			*ft_readfile(char *file);
 void			*ft_realloc(void *ptr, size_t new_size);
 char			**ft_splitwspc(const char *str);
 
-float			ft_sqrt(int n);
+float			ft_sqrt(float nb);
 
 char			*ft_strcat(char *dest, const char *src);
 char			*ft_strchr(const char *str, int c);
 int				ft_strclen(const char *str, char c);
 int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strcpy(char *dest, const char *src);
-void			ft_strdel(char **as);
+void			ft_strdel(char **str);
 char			*ft_strdup(const char *src);
 char			*ft_strfjoin(const char *s1, const char *s2, int choose);
 char			*ft_strjoin(char const *s1, char const *s2);
@@ -114,11 +107,5 @@ int				ft_toupper(int c);
 
 int				ft_wordcount(const char *str, char c);
 int				get_next_line(const int fd, char **line);
-
-int				my_printf(int fd, const char *str, ...);
-int				my_putchar_fd(char c, int fd);
-int				my_putendl_fd(char const *s, int fd);
-int				my_putnbr_fd(int n, int fd);
-int				my_putstr_fd(char const *s, int fd);
 
 #endif

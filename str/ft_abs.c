@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstat.c                                         :+:      :+:    :+:   */
+/*   ft_absolute.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/22 02:44:29 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/10 15:08:24 by maboye           ###   ########.fr       */
+/*   Created: 2019/07/31 11:54:11 by maboye            #+#    #+#             */
+/*   Updated: 2019/07/31 11:55:39 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_list		*ft_lstat(t_list *list, unsigned int nbr)
+int			ft_abs(int nb)
 {
-	int	i;
-
-	if (!list)
-		return ((void *)0);
-	i = nbr;
-	while (i-- && list)
-		list = list->next;
-	return (i >= -1 ? list : (void *)0);
+	return (nb < 0 ? -nb : nb);
 }

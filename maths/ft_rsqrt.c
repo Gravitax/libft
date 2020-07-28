@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_rsqrt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/10 13:05:55 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/10 15:08:24 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
+/*   Updated: 2020/07/28 17:18:01 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int				my_putstr_fd(char const *s, int fd)
+float			rsqrt(float number)
 {
-	ft_putstr_fd(s, fd);
-	return (ft_strlen(s));
+	float	i;
+	float	threehalfs;
+	t_rsqrt	conv;
+
+	i = number * 0.5f;
+	threehalfs = 1.5f;
+	conv = (t_rsqrt){ number };
+	conv.i = 0x5f3759df - (conv.i >> 1);
+	conv.f *= (threehalfs - (i * conv.f * conv.f));
+	return (conv.f);
 }

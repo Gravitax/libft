@@ -6,7 +6,7 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 11:17:40 by maboye            #+#    #+#              #
-#    Updated: 2019/05/13 13:36:18 by maboye           ###   ########.fr        #
+#    Updated: 2019/07/31 11:57:08 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME	=	libft.a
 HEADER	=	libft.h
 
 #DIR LIST
-D_LIST	=	./list
 D_MATHS	=	./maths
 D_MEM	=	./mem
 D_PRINT	=	./print
@@ -23,21 +22,12 @@ D_STR	=	./str
 D_TAB	=	./tab
 
 #SRC LIST
-S_LIST	=	ft_lstaddback.c\
-			ft_lstaddelem.c\
-			ft_lstaddfront.c\
-			ft_lstat.c\
-			ft_lstdel.c\
-			ft_lstmerge.c\
-			ft_lstsize.c
-
 S_MATHS	=	ft_isprime.c\
 			ft_power.c\
 			ft_sqrt.c
 
 S_MEM	=	ft_memalloc.c\
 			ft_memcpy.c\
-			ft_memccpy.c\
 			ft_memchr.c\
 			ft_memcmp.c\
 			ft_memdel.c\
@@ -59,12 +49,15 @@ S_PRINT	=	ft_printf.c\
 			my_putnbr_fd.c\
 			my_putstr_fd.c
 
-S_STR	=	ft_atoi.c\
+S_STR	=	ft_abs.c\
+			ft_atoi_base.c\
+			ft_atoi.c\
 			ft_bzero.c\
 			ft_intlen.c\
 			ft_isalnum.c\
 			ft_isalpha.c\
 			ft_isdigit.c\
+			ft_ishexa.c\
 			ft_islower.c\
 			ft_isprint.c\
 			ft_isspace.c\
@@ -99,17 +92,14 @@ S_STR	=	ft_atoi.c\
 			ft_wordcount.c\
 			get_next_line.c
 
-S_TAB	=	ft_bubblesort.c\
-			ft_quicksort.c\
-			ft_tabaddelem.c\
+S_TAB	=	ft_tabaddelem.c\
 			ft_tabdup.c\
 			ft_tabfree.c\
 			ft_tablen.c\
 			ft_tabmerge.c\
 			ft_tabprint.c
 
-SRC		=	$(addprefix $(D_LIST)/,$(S_LIST))\
-			$(addprefix $(D_MATHS)/,$(S_MATHS))\
+SRC		=	$(addprefix $(D_MATHS)/,$(S_MATHS))\
 			$(addprefix $(D_MEM)/,$(S_MEM))\
 			$(addprefix $(D_PRINT)/,$(S_PRINT))\
 			$(addprefix $(D_STR)/,$(S_STR))\

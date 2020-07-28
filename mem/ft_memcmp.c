@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:02 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/03 16:54:09 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:10:27 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,5 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n)
 	x = -1;
 	while (++x < n && s1_tmp[x] == s2_tmp[x])
 		;
-	if (x == n)
-		return (0);
-	return (s1_tmp[x] - s2_tmp[x]);
+	return (x == n ? 0 : s1_tmp[x] - s2_tmp[x]);
 }

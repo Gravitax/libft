@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdint.h>
 #include <sys/types.h>
 
 static inline int64_t	detectnull(int64_t s)

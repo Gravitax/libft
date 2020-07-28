@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
 #include <unistd.h>
 #include "../libft.h"
 
@@ -43,7 +42,7 @@ static int		get_line(char **str, char **line, int fd, int ret)
 
 int				get_next_line(const int fd, char **line)
 {
-	static char	*str[OPEN_MAX];
+	static char	*str[256];
 	char		buf[BUFF_SIZE + 1];
 	int			ret;
 

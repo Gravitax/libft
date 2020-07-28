@@ -6,11 +6,11 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 19:16:41 by maboye            #+#    #+#             */
-/*   Updated: 2019/05/03 16:35:20 by maboye           ###   ########.fr       */
+/*   Updated: 2020/07/28 17:08:43 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			ft_isprime(int nb)
+bool			ft_isprime(int nb)
 {
 	int x;
 
@@ -18,12 +18,12 @@ int			ft_isprime(int nb)
 	if (nb <= 3)
 		return (nb <= 1 ? 0 : 1);
 	if (nb % 2 == 0 || nb % 3 == 0)
-		return (0);
+		return (false);
 	while (x * x <= nb)
 	{
 		if (nb % x == 0)
-			return (0);
+			return (false);
 		x += 2;
 	}
-	return (1);
+	return (true);
 }
