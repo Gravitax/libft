@@ -6,20 +6,20 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:14 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:48:23 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/08 18:09:13 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void			*ft_memset(void *s, int c, size_t n)
+void			*ft_memset(void *ptr, int c, size_t n)
 {
-	unsigned char	*ptr;
+	unsigned char	*new;
 
-	if (!s)
+	if (!ptr)
 		return (NULL);
-	ptr = (unsigned char *)s;
+	new = (unsigned char *)ptr;
 	while (n--)
-		*ptr++ = (unsigned char)c;
-	return (s);
+		*new++ = (unsigned char)c;
+	return (new);
 }

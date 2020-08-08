@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_arrfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:44 by maboye           ###   ########.fr       */
+/*   Created: 2019/02/25 17:32:49 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 18:49:33 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float			ft_sqrt(float nb)
-{
-	float	n;
-	int		i;
+#include "../libft.h"
 
-	if (nb <= 1)
-		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
-	n = 1;
-	i = 23;
-	while (--i)
-		n = (0.5) * (n + nb / n);
-	return (n);
+void		ft_arrfree(void **add)
+{
+	int		i;
+	int		len;
+
+	len = ft_arrlen(add);
+	if (len)
+	{
+		i = -1;
+		while (add && ++i < len)
+			ft_memdel(&add[i]);
+		free((void **)add);
+		add = NULL;
+	}
 }

@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:44 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/07 13:57:04 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 18:12:35 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float			ft_sqrt(float nb)
-{
-	float	n;
-	int		i;
+#include "../libft.h"
 
-	if (nb <= 1)
-		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
-	n = 1;
-	i = 23;
-	while (--i)
-		n = (0.5) * (n + nb / n);
-	return (n);
+char			*ft_itoa(int nb)
+{
+	char	ret[11];
+	char	*r;
+	int		neg;
+	int		i;
+	int		j;
+
+	j = 0;
+	i = 0;
+	neg = nb < 0 ? -1 : 1;
+	while (neg * nb > 9 || neg * nb < 0)
+	{
+		ret[i++] = '0' + neg * (nb % 10);
+		nb = nb / 10;
+	}
+	ret[i++] = '0' + neg * nb;
+	if (neg < 0)
+		ret[i++] = '-';
+	if (!(r = ft_strnew(i)))
+		return (NULL);
+	while (i--)
+		r[i] = ret[j++];
+	return (r);
 }

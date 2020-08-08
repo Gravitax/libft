@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:44 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/06 11:46:43 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 18:30:47 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float			ft_sqrt(float nb)
-{
-	float	n;
-	int		i;
+#include <stdlib.h>
 
-	if (nb <= 1)
-		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
-	n = 1;
-	i = 23;
-	while (--i)
-		n = (0.5) * (n + nb / n);
-	return (n);
+char			*ft_strncpy(char *dest, const char *src, size_t n)
+{
+	int	i;
+
+	if (!dest || !src)
+		return (NULL);
+	i = -1;
+	while (src[++i] && (i < (int)n))
+		dest[i] = src[i];
+	while (i < (int)n)
+		dest[i++] = '\0';
+	return (dest);
 }

@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:44 by maboye           ###   ########.fr       */
+/*   Created: 2019/05/13 12:36:05 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 16:37:10 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float			ft_sqrt(float nb)
+int				ft_strclen(const char *str, char c)
 {
-	float	n;
 	int		i;
 
-	if (nb <= 1)
-		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
-	n = 1;
-	i = 23;
-	while (--i)
-		n = (0.5) * (n + nb / n);
-	return (n);
+	i = -1;
+	while (str && str[++i])
+		if (str[i] == c)
+			return (i);
+	return (0);
 }

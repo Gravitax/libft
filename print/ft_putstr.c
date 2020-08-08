@@ -6,13 +6,13 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:20:03 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:48:45 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/08 18:14:24 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void			ft_putstr(char const *s)
+void			ft_putstr(char const *str)
 {
-	s ? ft_putstr_fd(s, 1) : 0;
+	str ? ft_putstr_fd(str, 1) : 0;
 }

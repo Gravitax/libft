@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:44 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/12 23:01:11 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 18:32:08 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float			ft_sqrt(float nb)
+int				ft_wordcount(const char *str, char c)
 {
-	float	n;
-	int		i;
+	int count;
+	int	i;
 
-	if (nb <= 1)
-		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
-	n = 1;
-	i = 23;
-	while (--i)
-		n = (0.5) * (n + nb / n);
-	return (n);
+	i = 0;
+	count = 0;
+	while (str && str[i])
+	{
+		while (str && str[i] == c)
+			i++;
+		if (str && str[i] != c && str[i] != '\0')
+			count++;
+		while (str && str[i] != c && str[i] != '\0')
+			i++;
+	}
+	return (count);
 }

@@ -6,17 +6,17 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:19:43 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:48:37 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/08 18:13:45 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void			ft_putendl_fd(char const *s, int fd)
+void			ft_putendl_fd(char const *str, int fd)
 {
-	if (s)
+	if (str)
 	{
-		ft_putstr_fd(s, fd);
+		ft_putstr_fd(str, fd);
 		ft_putchar_fd('\n', fd);
 	}
 }

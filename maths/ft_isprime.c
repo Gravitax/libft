@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 19:16:41 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:24:16 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/08 18:15:09 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 bool			ft_isprime(int nb)
 {
-	int x;
+	int	n;
 
-	x = 3;
+	n = 3;
 	if (nb <= 3)
 		return (nb <= 1 ? 0 : 1);
 	if (nb % 2 == 0 || nb % 3 == 0)
 		return (false);
-	while (x * x <= nb)
+	while (n * n <= nb)
 	{
-		if (nb % x == 0)
+		if (nb % n == 0)
 			return (false);
-		x += 2;
+		n += 2;
 	}
 	return (true);
 }

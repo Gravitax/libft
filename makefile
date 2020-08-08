@@ -6,22 +6,47 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 11:17:40 by maboye            #+#    #+#              #
-#    Updated: 2020/07/28 17:24:59 by maboye           ###   ########.fr        #
+#    Updated: 2020/08/08 20:38:48 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libft.a
 
-HEADER	=	libft.h
+CC		=	gcc
 
-#DIR LIST
-D_MATHS	=	./maths
-D_MEM	=	./mem
-D_PRINT	=	./print
-D_STR	=	./str
-D_TAB	=	./tab
+CFLAGS	=	-Wall -Wextra -Werror
 
-#SRC LIST
+DEBUG	?=	0
+ifeq ($(DEBUG), 1)
+    FLAGS += -g3 -fsanitize=address
+endif
+
+OPTI	?=	0
+ifeq ($(OPTI), 1)
+    FLAGS += -Ofast -march=native
+endif
+
+INCLUDE	=	libft.h\
+			dynarray/dynarray.h
+
+D_ARRAY	 =	./array
+D_DARR	 =	./dynarray
+D_MATHS  =	./maths
+D_MEM	 =	./mem
+D_PRINT	 =	./print
+D_STRING =	./string
+
+S_ARRAY	=	ft_arr_cdup.c\
+			ft_arr_cprint.c\
+			ft_arrfree.c\
+			ft_arrlen.c
+
+S_DARR	=	dynarray.c\
+			dynarray_insert.c\
+			dynarray_mem.c\
+			dynarray_quicksort.c\
+			dynarray_stack.c
+
 S_MATHS	=	ft_isprime.c\
 			ft_power.c\
 			ft_rsqrt.c\
@@ -32,7 +57,6 @@ S_MEM	=	ft_memalloc.c\
 			ft_memchr.c\
 			ft_memcmp.c\
 			ft_memdel.c\
-			ft_memmove.c\
 			ft_memset.c
 
 S_PRINT	=	ft_printf.c\
@@ -45,7 +69,7 @@ S_PRINT	=	ft_printf.c\
 			ft_putstr.c\
 			ft_putstr_fd.c\
 
-S_STR	=	ft_abs.c\
+S_STRING =	ft_abs.c\
 			ft_atoi_base.c\
 			ft_atoi.c\
 			ft_bzero.c\
@@ -55,13 +79,12 @@ S_STR	=	ft_abs.c\
 			ft_isdigit.c\
 			ft_ishexa.c\
 			ft_islower.c\
-			ft_isprint.c\
+			ft_isprintable.c\
 			ft_isspace.c\
 			ft_isupper.c\
 			ft_itoa.c\
 			ft_readfile.c\
 			ft_realloc.c\
-			ft_splitwspc.c\
 			ft_strcat.c\
 			ft_strchr.c\
 			ft_strclen.c\
@@ -76,61 +99,48 @@ S_STR	=	ft_abs.c\
 			ft_strncmp.c\
 			ft_strncpy.c\
 			ft_strnew.c\
-			ft_strnstr.c\
-			ft_strrchr.c\
 			ft_strsplit.c\
 			ft_strstr.c\
 			ft_strsub.c\
-			ft_strtrim.c\
-			ft_swap.c\
 			ft_tolower.c\
 			ft_toupper.c\
 			ft_wordcount.c\
 			get_next_line.c
 
-S_TAB	=	ft_tabaddelem.c\
-			ft_tabdup.c\
-			ft_tabfree.c\
-			ft_tablen.c\
-			ft_tabmerge.c\
-			ft_tabprint.c
-
-SRC		=	$(addprefix $(D_MATHS)/,$(S_MATHS))\
+SRC		=	$(addprefix $(D_ARRAY)/,$(S_ARRAY))\
+			$(addprefix $(D_DARR)/,$(S_DARR))\
+			$(addprefix $(D_MATHS)/,$(S_MATHS))\
 			$(addprefix $(D_MEM)/,$(S_MEM))\
 			$(addprefix $(D_PRINT)/,$(S_PRINT))\
-			$(addprefix $(D_STR)/,$(S_STR))\
-			$(addprefix $(D_TAB)/,$(S_TAB))
+			$(addprefix $(D_STRING)/,$(S_STRING))
 
 OBJ 	=	$(SRC:.c=.o)
 
-CC		=	gcc
-
-CFLAGS	=	-Wall -Wextra -Werror
-
-INCLUDE	=	-I .
-
-BLACK	=	\033[30m
+GRA		=	\033[1m
+SOU		=	\033[4m
+BLI		=	\033[5m
+BLA		=	\033[30m
 RED		=	\033[31m
-GREEN	=	\033[32m
-YELLOW	=	\033[33m
-BLUE	=	\033[34m
-PURPLE	=	\033[35m
-TUR		=	\033[36m
-WHITE	=	\033[37m
+GRE		=	\033[32m
+YEL		=	\033[33m
+BLU		=	\033[34m
+PUR		=	\033[35m
+CYA		=	\033[36m
+WHI		=	\033[37m
+ORG		=	\033[1;31m
 END		=	\033[0m
-
-UP 		=	\033[A
-CUT 	=	\033[K
 
 all:		$(NAME)
 
-%.o:		%.c
-			@echo "${TUR}compiling [$@] ...${END}"
-			@$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
-			@printf "$(UP)$(CUT)"
+%.o: 		%.c $(INCLUDE)
+			@printf "${RED}Compiling [$<]"
+			@printf "                          \\r${END}"
+			@$(CC) $(FLAGS) -c -o $@ $<
 
-$(NAME):	$(OBJ) $(HEADER)
+$(NAME):	$(OBJ)
 			@ar rcs $(NAME) $(OBJ)
+			@printf "$(GRE)Libft successfully compiled !"
+			@printf "                           \n${END}"
 
 clean:
 			@/bin/rm -rf $(OBJ)

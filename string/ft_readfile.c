@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_readfile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 05:07:59 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:10:46 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/26 16:17:32 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 16:33:32 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "../libft.h"
 
-void			ft_printf(int fd, const char *str, ...)
+char			*ft_readfile(char *file)
 {
-	va_list	args;
+	int		ret;
+	int		x;
+	char	buf[BUFF_SIZE + 1];
+	char	*str;
 
-	if (!str)
-		return ;
-	va_start(args, str);
-	while (str && *str)
+	if (!file || BUFF_SIZE < 0)
+		return (NULL);
+	if (!(str = ft_strnew(1)))
+		return (NULL);
+	x = open(file, O_RDONLY);
+	while ((ret = read(x, buf, BUFF_SIZE)))
 	{
-		if (*str == '%')
+		if (ret == -1)
 		{
-			++str;
-			if (*str == 's')
-				ft_putstr_fd(va_arg(args, char *), fd);
-			else if (*str == 'd')
-				ft_putnbr_fd(va_arg(args, int), fd);
-			else if (*str == 'c')
-				ft_putchar_fd(va_arg(args, int), fd);
-			++str;
+			ft_strdel(&str);
+			close(x);
+			return (NULL);
 		}
-		else
-			ft_putchar_fd(*str++, fd);
+		buf[ret] = '\0';
+		str = ft_strfjoin(str, buf, 1);
 	}
-	va_end(args);
+	close(x);
+	return (str);
 }

@@ -6,23 +6,23 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:45:57 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:48:08 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/08 18:06:31 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void			*ft_memchr(const void *s, int c, size_t n)
+void			*ft_memchr(const void *ptr, int c, size_t n)
 {
-	const char	*tmp;
-	size_t		x;
+	const char	*big;
+	int			i;
 
-	if (!s)
+	if (!ptr)
 		return (NULL);
-	tmp = (const char*)s;
-	x = -1;
-	while (++x < n)
-		if (tmp[x] == (char)c)
-			return ((void*)tmp + x);
+	big = (const char*)ptr;
+	i = -1;
+	while (++i < (int)n)
+		if (big[i] == c)
+			return ((void *)&big[i]);
 	return (NULL);
 }

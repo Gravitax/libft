@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 22:43:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:15:44 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/06 11:46:34 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 17:07:07 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-float			ft_sqrt(float nb)
-{
-	float	n;
-	int		i;
+#include <stdint.h>
+#include <sys/types.h>
 
-	if (nb <= 1)
-		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
-	n = 1;
-	i = 23;
-	while (--i)
-		n = (0.5) * (n + nb / n);
-	return (n);
+static inline int64_t	detectnull(int64_t s)
+{
+	return ((s - 0x0101010101010101) & ~s & 0x8080808080808080);
+}
+
+size_t					ft_strlen(const char *s)
+{
+	char *str;
+
+	if (!s)
+		return (-1);
+	str = (char *)s;
+	while (*str && (uintptr_t)str & 7)
+		str++;
+	while (!(detectnull(*(int64_t *)str)))
+		str += sizeof(int64_t);
+	while (*str)
+		str++;
+	return (str - s);
 }
