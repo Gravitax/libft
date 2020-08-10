@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:29 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 16:38:14 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:34:04 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 char			*ft_strdup(const char *src)
 {
-	int		len;
-	char	*copy;
+	char	*new;
 
-	len = ft_strlen(src);
-	if (!(copy = ft_strnew(len)))
+	if (!(new = (char *)ft_memalloc((ft_strlen(src) + 1) * sizeof(char))))
 		return (NULL);
-	ft_strcpy(copy, src);
-	return (copy);
+	ft_strcpy(new, src);
+	return (new);
 }

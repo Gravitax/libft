@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 09:10:44 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:25:48 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 19:29:09 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 char			*ft_strfjoin(const char *s1, const char *s2, int choose)
 {
-	char	*str;
-
-	if (!(str = ft_strjoin(s1, s2)))
-		return (NULL);
 	if (choose == 1)
 		ft_strdel((char **)&s1);
 	else if (choose == 2)
@@ -27,5 +23,5 @@ char			*ft_strfjoin(const char *s1, const char *s2, int choose)
 		ft_strdel((char **)&s1);
 		ft_strdel((char **)&s2);
 	}
-	return (str);
+	return (ft_strjoin(s1, s2));
 }

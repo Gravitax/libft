@@ -6,30 +6,18 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 11:46:34 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 17:07:07 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:32:03 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include <sys/types.h>
+#include <stdlib.h>
 
-static inline int64_t	detectnull(int64_t s)
+size_t					ft_strlen(const char *str)
 {
-	return ((s - 0x0101010101010101) & ~s & 0x8080808080808080);
-}
+	size_t	i;
 
-size_t					ft_strlen(const char *s)
-{
-	char *str;
-
-	if (!s)
-		return (-1);
-	str = (char *)s;
-	while (*str && (uintptr_t)str & 7)
-		str++;
-	while (!(detectnull(*(int64_t *)str)))
-		str += sizeof(int64_t);
-	while (*str)
-		str++;
-	return (str - s);
+	i = 0;
+	while (str && str[i])
+		++i;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:37:46 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:55:26 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:39:33 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@ char			**ft_strsplit(char const *s, char c)
 	int		i;
 	int		x;
 	int		len;
-	char	**str;
+	char	**split;
 
-	if (!s || !*s)
+	if (!s)
 		return (NULL);
 	x = 0;
 	len = ft_wordcount(s, c);
-	if (len < 1 || !(str = (char **)malloc((len + 1) * sizeof(char *))))
+	if (len < 1 || !(split = (char **)malloc((len + 1) * sizeof(char *))))
 		return (NULL);
 	i = -1;
 	while (++i < len)
-		if (!(ft_copyin_tab(s, &str[i], c, &x)))
+		if (!(ft_copyin_tab(s, &split[i], c, &x)))
 		{
-			ft_arrfree((void **)str);
+			ft_arrfree((void **)split);
 			return (NULL);
 		}
-	str[i] = NULL;
-	return (str);
+	split[i] = NULL;
+	return (split);
 }

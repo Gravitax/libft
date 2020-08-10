@@ -6,21 +6,21 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:37:50 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:31:47 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:29:51 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char			*ft_strsub(char const *s, unsigned int start, size_t len)
+char			*ft_strsub(const char *str, unsigned int start, size_t len)
 {
-	char	*str;
+	char	*new;
 	int		i;
 
-	if (!s || !(str = ft_strnew(len)))
+	if (!str || !(new = (char *)ft_memalloc(len * sizeof(char))))
 		return (NULL);
 	i = -1;
 	while (++i < (int)len)
-		str[i] = s[start++];
-	return (str);
+		new[i] = str[start++];
+	return (new);
 }

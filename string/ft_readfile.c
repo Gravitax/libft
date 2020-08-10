@@ -6,37 +6,28 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 16:17:32 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 16:33:32 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 19:58:07 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include "../libft.h"
 
-char			*ft_readfile(char *file)
+char			*ft_readfile(char *file_path)
 {
-	int		ret;
-	int		x;
-	char	buf[BUFF_SIZE + 1];
-	char	*str;
+	struct stat	file_stat;
+	char		*dst;
+	int			fd;
 
-	if (!file || BUFF_SIZE < 0)
+	fd = open(file_path, O_RDONLY);
+	if (fstat(fd, &file_stat))
 		return (NULL);
-	if (!(str = ft_strnew(1)))
+	if (!(dst = mmap(NULL, file_stat.st_size,
+		PROT_READ | PROT_WRITE, MAP_FILE | MAP_PRIVATE, fd, 0)))
 		return (NULL);
-	x = open(file, O_RDONLY);
-	while ((ret = read(x, buf, BUFF_SIZE)))
-	{
-		if (ret == -1)
-		{
-			ft_strdel(&str);
-			close(x);
-			return (NULL);
-		}
-		buf[ret] = '\0';
-		str = ft_strfjoin(str, buf, 1);
-	}
-	close(x);
-	return (str);
+	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 15:36:41 by maboye            #+#    #+#             */
-/*   Updated: 2020/07/28 17:48:05 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:03:14 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void			*ft_memalloc(size_t size)
 {
-	void	*tmp;
+	void	*new;
 
-	if (!(tmp = malloc(size)))
+	if (!(new = malloc(size)))
 		return (NULL);
-	ft_memset(tmp, 0, size);
-	return (tmp);
+	ft_memset(new, 0, size);
+	return (new);
 }

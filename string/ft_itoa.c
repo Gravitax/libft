@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 13:57:04 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:12:35 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 19:44:13 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char			*ft_itoa(int nb)
 	ret[i++] = '0' + neg * nb;
 	if (neg < 0)
 		ret[i++] = '-';
-	if (!(r = ft_strnew(i)))
+	if (!(r = (char *)ft_memalloc(i * sizeof(char))))
 		return (NULL);
 	while (i--)
 		r[i] = ret[j++];

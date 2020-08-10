@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 19:13:14 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 20:39:22 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:10:51 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int				dynarray_extract(t_dynarray *arr, int index);
 
 int				check_space(t_dynarray *arr);
 
+void			dynarray_bubblesort(t_dynarray *arr,
+					int (*compare)(void *a, void *b));
 void			dynarray_quicksort(t_dynarray *arr, int low, int high,
 					int (*compare)(void *a, void *b));
 

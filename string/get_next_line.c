@@ -6,7 +6,7 @@
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 02:30:19 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:34:39 by maboye           ###   ########.fr       */
+/*   Updated: 2020/08/10 20:39:48 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				get_next_line(const int fd, char **line)
 	if (!line || fd < 0 || BUFF_SIZE < 0)
 		return (-1);
 	if (!str[fd])
-		if (!(str[fd] = ft_strnew(1)))
+		if (!(str[fd] = (char *)ft_memalloc(1 * sizeof(char))))
 			return (-1);
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{

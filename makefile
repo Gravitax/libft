@@ -6,7 +6,7 @@
 #    By: maboye <maboye@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 11:17:40 by maboye            #+#    #+#              #
-#    Updated: 2020/08/08 20:38:48 by maboye           ###   ########.fr        #
+#    Updated: 2020/08/10 20:12:29 by maboye           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,10 @@ INCLUDE	=	libft.h\
 			dynarray/dynarray.h
 
 D_ARRAY	 =	./array
+D_CHAR	 =	./char
 D_DARR	 =	./dynarray
 D_MATHS  =	./maths
-D_MEM	 =	./mem
+D_MEM	 =	./memory
 D_PRINT	 =	./print
 D_STRING =	./string
 
@@ -41,10 +42,19 @@ S_ARRAY	=	ft_arr_cdup.c\
 			ft_arrfree.c\
 			ft_arrlen.c
 
+S_CHAR	=	ft_isalnum.c\
+			ft_isalpha.c\
+			ft_isdigit.c\
+			ft_ishexa.c\
+			ft_islower.c\
+			ft_isprintable.c\
+			ft_isspace.c\
+			ft_isupper.c
+
 S_DARR	=	dynarray.c\
 			dynarray_insert.c\
 			dynarray_mem.c\
-			dynarray_quicksort.c\
+			dynarray_sort.c\
 			dynarray_stack.c
 
 S_MATHS	=	ft_isprime.c\
@@ -70,18 +80,10 @@ S_PRINT	=	ft_printf.c\
 			ft_putstr_fd.c\
 
 S_STRING =	ft_abs.c\
-			ft_atoi_base.c\
+			ft_atof.c\
 			ft_atoi.c\
-			ft_bzero.c\
+			ft_atoi_base.c\
 			ft_intlen.c\
-			ft_isalnum.c\
-			ft_isalpha.c\
-			ft_isdigit.c\
-			ft_ishexa.c\
-			ft_islower.c\
-			ft_isprintable.c\
-			ft_isspace.c\
-			ft_isupper.c\
 			ft_itoa.c\
 			ft_readfile.c\
 			ft_realloc.c\
@@ -98,7 +100,6 @@ S_STRING =	ft_abs.c\
 			ft_strncat.c\
 			ft_strncmp.c\
 			ft_strncpy.c\
-			ft_strnew.c\
 			ft_strsplit.c\
 			ft_strstr.c\
 			ft_strsub.c\
@@ -108,6 +109,7 @@ S_STRING =	ft_abs.c\
 			get_next_line.c
 
 SRC		=	$(addprefix $(D_ARRAY)/,$(S_ARRAY))\
+			$(addprefix $(D_CHAR)/,$(S_CHAR))\
 			$(addprefix $(D_DARR)/,$(S_DARR))\
 			$(addprefix $(D_MATHS)/,$(S_MATHS))\
 			$(addprefix $(D_MEM)/,$(S_MEM))\
