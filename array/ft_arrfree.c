@@ -18,12 +18,9 @@ void		ft_arrfree(void **add)
 	int		len;
 
 	len = ft_arrlen(add);
-	if (len)
-	{
-		i = -1;
-		while (add && ++i < len)
-			ft_memdel(&add[i]);
-		free((void **)add);
-		add = NULL;
-	}
+	i = -1;
+	while (add && ++i < len)
+		ft_memdel(add + i);
+	free((void **)add);
+	add = NULL;
 }

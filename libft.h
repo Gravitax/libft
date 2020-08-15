@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdbool.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include "dynarray/dynarray.h"
 
@@ -25,11 +26,11 @@ typedef union	u_rsqrt
 	uint32_t	i;
 }				t_rsqrt;
 
-char			**ft_arr_cdup(const char **arr);
 void			ft_arr_cprint(char **arr);
 void			ft_arrfree(void **arr);
 int				ft_arrlen(void **arr);
 
+bool            ft_inbounds(int c, int min, int max);
 bool			ft_isalnum(int c);
 bool			ft_isalpha(int c);
 bool			ft_isascii(int c);
@@ -51,6 +52,7 @@ int				ft_memcmp(const void *s1, const void *s2, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			ft_memdel(void **ptr);
 void			*ft_memset(void *ptr, int c, size_t n);
+void			*ft_realloc(void *ptr, size_t new_size);
 
 void			ft_printf(int fd, const char *str, ...);
 void			ft_putchar(char c);
@@ -68,8 +70,8 @@ int				ft_atoi(const char *str);
 long			ft_atoi_base(const char *str, unsigned int base);
 int				ft_intlen(int nb);
 char			*ft_itoa(int nb);
+char			*ft_mmapfile(char *file_path);
 char			*ft_readfile(char *file_path);
-void			*ft_realloc(void *ptr, size_t new_size);
 char			*ft_strcat(char *dst, const char *src);
 char			*ft_strchr(const char *str, int c);
 int				ft_strclen(const char *str, char c);
@@ -83,9 +85,9 @@ size_t			ft_strlen(const char *str);
 char			*ft_strncat(char *dst, const char *src, size_t nb);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strncpy(char *dst, const char *src, size_t n);
-char			**ft_strsplit(char const *s, char c);
+char			**ft_strsplit(const char *s, char c);
 char			*ft_strstr(const char *str, const char *to_find);
-char			*ft_strsub(const char *str, unsigned int start, size_t len);
+char			*ft_strsub(char const *str, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 int				ft_wordcount(const char *str, char c);

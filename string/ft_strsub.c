@@ -17,10 +17,11 @@ char			*ft_strsub(const char *str, unsigned int start, size_t len)
 	char	*new;
 	int		i;
 
-	if (!str || !(new = (char *)ft_memalloc(len * sizeof(char))))
+	if (!str || len < 1
+		|| !(new = (char *)ft_memalloc(sizeof(char) * (len + 1))))
 		return (NULL);
 	i = -1;
 	while (++i < (int)len)
-		new[i] = str[start++];
+		new[i] = str[start + i];
 	return (new);
 }

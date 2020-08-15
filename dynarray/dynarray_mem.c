@@ -18,7 +18,7 @@ static int		realloc_content(t_dynarray *arr)
 	int		prev_size;
 
 	prev_size = arr->byte_size;
-	arr->byte_size *= 2;
+	arr->byte_size += arr->byte_size;
 	free(arr->tmp);
 	if (!(tmp = ft_memalloc(arr->byte_size))
 		|| !(arr->tmp = ft_memalloc(arr->byte_size)))

@@ -14,12 +14,21 @@
 
 void			*ft_memset(void *ptr, int c, size_t n)
 {
-	unsigned char	*new;
+	unsigned long	*longword_ptr;
+	unsigned long	magicbit;
+	unsigned char	ch;
+	unsigned int	i;
 
-	if (!ptr)
-		return (NULL);
-	new = (unsigned char *)ptr;
-	while (n--)
-		*new++ = (unsigned char)c;
-	return (new);
+	ch = (unsigned char)c;
+	magicbit = (~0UL / 255) * (unsigned char)c;
+	i = -1;
+	while (++i < n % 8)
+		((unsigned char*)ptr)[i] = ch;
+	longword_ptr = (unsigned long *)(ptr + i);
+	while (i < n)
+	{
+		*longword_ptr++ = magicbit;
+		i += 8;
+	}
+	return (ptr);
 }

@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 11:46:37 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/10 20:45:42 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/06 11:46:02 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/08 17:45:54 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char			*strncat(char *dst, const char *src, size_t n)
+bool			ft_inbounds(int c, int min, int max)
 {
-	int	len;
-
-	len = ft_strlen(dst);
-	if (ft_strlen(src) < (int)n)
-		ft_strcpy(dst + len, src);
-	else
-		ft_strncpy(dst + len, src, n);
-	dst[len + n] = '\0';
-	return (dst);
+	return (c >= min && c <= max);
 }

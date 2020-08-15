@@ -12,42 +12,36 @@
 
 #include "../libft.h"
 
-static int		ft_copyin_tab(const char *s, char **str, char c, int *x)
+static int		ft_copyin_tab(const char *s, char **split, char c, int *current)
 {
-	int		len;
 	int		start;
 
-	len = 0;
-	while (s[*x] && s[*x] == c)
-		(*x)++;
-	start = *x;
-	while (s[*x] && s[(*x)++] != c)
-		len++;
-	if (!(*str = ft_strsub(s, start, len)))
-		return (0);
-	return (1);
+	while (s[*current] && s[*current] == c)
+		++(*current);
+	start = *current;
+	while (s[*current] && s[*current] != c)
+		++(*current);
+	*split = ft_strsub(s, start, *current - start);
+	return (*split ? 0 : -1);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(const char *str, char c)
 {
-	int		i;
-	int		x;
-	int		len;
 	char	**split;
+	int		i;
+	int		current;
+	int		len;
 
-	if (!s)
+	if (!str || (len = ft_wordcount(str, c)) < 1
+		|| !(split = (char **)ft_memalloc(sizeof(char *) * (len + 1))))
 		return (NULL);
-	x = 0;
-	len = ft_wordcount(s, c);
-	if (len < 1 || !(split = (char **)malloc((len + 1) * sizeof(char *))))
-		return (NULL);
+	current = 0;
 	i = -1;
 	while (++i < len)
-		if (!(ft_copyin_tab(s, &split[i], c, &x)))
+		if (ft_copyin_tab(str, split + i, c, &current))
 		{
 			ft_arrfree((void **)split);
 			return (NULL);
 		}
-	split[i] = NULL;
 	return (split);
 }

@@ -14,6 +14,10 @@
 
 char			*ft_strfjoin(const char *s1, const char *s2, int choose)
 {
+	char	*new;
+
+	if (!(new = ft_strjoin(s1, s2)))
+		return (NULL);
 	if (choose == 1)
 		ft_strdel((char **)&s1);
 	else if (choose == 2)
@@ -23,5 +27,5 @@ char			*ft_strfjoin(const char *s1, const char *s2, int choose)
 		ft_strdel((char **)&s1);
 		ft_strdel((char **)&s2);
 	}
-	return (ft_strjoin(s1, s2));
+	return (new);
 }

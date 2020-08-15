@@ -19,7 +19,7 @@ int				ft_intlen(int nb)
 	while (nb >= 10)
 	{
 		nb /= 10;
-		count++;
+		++count;
 	}
 	return (count + 1);
 }

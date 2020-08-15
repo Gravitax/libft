@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arr_cdup.c                                      :+:      :+:    :+:   */
+/*   ft_mmapfile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/23 19:09:49 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/08 18:51:31 by maboye           ###   ########.fr       */
+/*   Created: 2018/11/26 16:17:32 by maboye            #+#    #+#             */
+/*   Updated: 2020/08/10 19:58:07 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 #include "../libft.h"
 
-char		**ft_arr_cdup(const char **arr)
+char			*ft_mmapfile(char *file_path)
 {
-	char	**new;
-	int		len;
-	int		i;
+	struct stat	file_stat;
+	char		*dst;
+	int			fd;
 
-	if (!arr || (len = ft_arrlen((void **)arr)) == 0)
+	fd = open(file_path, O_RDONLY);
+	if (fstat(fd, &file_stat))
+    {
+        close(fd);
 		return (NULL);
-	if (!(new = (char **)malloc(sizeof(char *) * (len + 1))))
-		return (NULL);
-	i = -1;
-	while (++i < len)
-		if (!(new[i] = ft_strdup(arr[i])))
-		{
-			ft_arrfree((void **)new);
-			return (NULL);
-		}
-	new[i] = NULL;
-	return (new);
+    }
+	dst = mmap(NULL, file_stat.st_size,
+		PROT_READ | PROT_WRITE, MAP_FILE | MAP_PRIVATE, fd, 0);
+    close(fd);
+	return (dst);
 }

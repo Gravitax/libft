@@ -14,8 +14,8 @@
 
 static double	part2(const char *str)
 {
-	int		count;
 	double	res2;
+	int		count;
 
 	count = 0;
 	res2 = ft_abs(ft_atoi(str));

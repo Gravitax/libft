@@ -14,15 +14,8 @@
 
 void			*ft_memchr(const void *ptr, int c, size_t n)
 {
-	const char	*big;
-	int			i;
-
-	if (!ptr)
-		return (NULL);
-	big = (const char*)ptr;
-	i = -1;
-	while (++i < (int)n)
-		if (big[i] == c)
-			return ((void *)&big[i]);
+	while (n--)
+		if (*(unsigned char*)ptr++ == (unsigned char)c)
+			return ((unsigned char *)ptr - 1);
 	return (NULL);
 }

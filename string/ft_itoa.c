@@ -20,9 +20,8 @@ char			*ft_itoa(int nb)
 	int		i;
 	int		j;
 
-	j = 0;
-	i = 0;
 	neg = nb < 0 ? -1 : 1;
+	i = 0;
 	while (neg * nb > 9 || neg * nb < 0)
 	{
 		ret[i++] = '0' + neg * (nb % 10);
@@ -31,8 +30,9 @@ char			*ft_itoa(int nb)
 	ret[i++] = '0' + neg * nb;
 	if (neg < 0)
 		ret[i++] = '-';
-	if (!(r = (char *)ft_memalloc(i * sizeof(char))))
+	if (!(r = (char *)ft_memalloc(sizeof(char) * i)))
 		return (NULL);
+	j = 0;
 	while (i--)
 		r[i] = ret[j++];
 	return (r);

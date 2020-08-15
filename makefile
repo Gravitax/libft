@@ -37,12 +37,12 @@ D_MEM	 =	./memory
 D_PRINT	 =	./print
 D_STRING =	./string
 
-S_ARRAY	=	ft_arr_cdup.c\
-			ft_arr_cprint.c\
+S_ARRAY	=	ft_arr_cprint.c\
 			ft_arrfree.c\
 			ft_arrlen.c
 
-S_CHAR	=	ft_isalnum.c\
+S_CHAR	=	ft_inbounds.c\
+			ft_isalnum.c\
 			ft_isalpha.c\
 			ft_isdigit.c\
 			ft_ishexa.c\
@@ -67,7 +67,8 @@ S_MEM	=	ft_memalloc.c\
 			ft_memchr.c\
 			ft_memcmp.c\
 			ft_memdel.c\
-			ft_memset.c
+			ft_memset.c\
+			ft_realloc.c\
 
 S_PRINT	=	ft_printf.c\
 			ft_putchar.c\
@@ -85,8 +86,8 @@ S_STRING =	ft_abs.c\
 			ft_atoi_base.c\
 			ft_intlen.c\
 			ft_itoa.c\
+			ft_mmapfile.c\
 			ft_readfile.c\
-			ft_realloc.c\
 			ft_strcat.c\
 			ft_strchr.c\
 			ft_strclen.c\
@@ -118,31 +119,21 @@ SRC		=	$(addprefix $(D_ARRAY)/,$(S_ARRAY))\
 
 OBJ 	=	$(SRC:.c=.o)
 
-GRA		=	\033[1m
-SOU		=	\033[4m
-BLI		=	\033[5m
-BLA		=	\033[30m
 RED		=	\033[31m
-GRE		=	\033[32m
-YEL		=	\033[33m
-BLU		=	\033[34m
-PUR		=	\033[35m
-CYA		=	\033[36m
-WHI		=	\033[37m
-ORG		=	\033[1;31m
+GREEN	=	\033[32m
 END		=	\033[0m
 
 all:		$(NAME)
 
 %.o: 		%.c $(INCLUDE)
 			@printf "${RED}Compiling [$<]"
-			@printf "                          \\r${END}"
+			@printf "                            \\r${END}"
 			@$(CC) $(FLAGS) -c -o $@ $<
 
 $(NAME):	$(OBJ)
 			@ar rcs $(NAME) $(OBJ)
-			@printf "$(GRE)Libft successfully compiled !"
-			@printf "                           \n${END}"
+			@printf "$(GREEN)Libft successfully compiled !"
+			@printf "                             \n${END}"
 
 clean:
 			@/bin/rm -rf $(OBJ)

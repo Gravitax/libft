@@ -11,23 +11,31 @@
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <unistd.h>
 #include "../libft.h"
 
 char			*ft_readfile(char *file_path)
 {
-	struct stat	file_stat;
-	char		*dst;
-	int			fd;
+	char	buf[BUFF_SIZE + 1];
+	char	*str;
+	int		fd;
+	int		r;
 
+	if (!file_path || BUFF_SIZE < 0)
+		return (NULL);
+	str = NULL;
 	fd = open(file_path, O_RDONLY);
-	if (fstat(fd, &file_stat))
-		return (NULL);
-	if (!(dst = mmap(NULL, file_stat.st_size,
-		PROT_READ | PROT_WRITE, MAP_FILE | MAP_PRIVATE, fd, 0)))
-		return (NULL);
-	return (dst);
+	while ((r = read(fd, buf, BUFF_SIZE)))
+	{
+		if (r == -1)
+		{
+			ft_strdel(&str);
+			close(fd);
+			return (NULL);
+		}
+		buf[r] = '\0';
+		str = ft_strfjoin(str, buf, 1);
+	}
+	close(fd);
+	return (str);
 }

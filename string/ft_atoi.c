@@ -14,23 +14,23 @@
 
 int				ft_atoi(const char *str)
 {
-	int			x;
-	int			signe;
 	long long	entier;
+	int			i;
+	int			signe;
 
-	x = 0;
 	entier = 0;
-	while (ft_isspace(str[x]))
-		x++;
-	signe = (str[x] == '-') ? -1 : 1;
-	(str[x] == '-' || str[x] == '+') ? x++ : 0;
-	while (ft_isdigit(str[x]))
+	i = -1;
+	while (ft_isspace(str[++i]))
+		;
+	signe = (str[i] == '-') ? -1 : 1;
+	(str[i] == '-' || str[i] == '+') ? ++i : 0;
+	while (ft_isdigit(str[i]))
 	{
 		if (entier * signe > 2147483647)
 			return (-1);
 		if (entier * signe < -2147483648)
 			return (0);
-		entier = entier * 10 + (str[x++] - '0');
+		entier = entier * 10 + (str[i++] - '0');
 	}
 	return ((int)entier * signe);
 }

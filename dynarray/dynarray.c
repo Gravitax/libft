@@ -32,7 +32,7 @@ static int		start_size(int size)
 
 	n = 2;
 	while (size >= n)
-		n *= 2;
+		n += n;
 	return (n);
 }
 

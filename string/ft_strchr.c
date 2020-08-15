@@ -10,15 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 char			*ft_strchr(const char *str, int c)
 {
-	int		i;
-
-	i = 0;
-	while (str[i] != (char)c)
-		if (!str[i++])
-			return (NULL);
-	return ((char *)&str[i]);
+	while (*str)
+	{
+		if (*str == c)
+			return ((char *)str);
+		++str;
+	}
+	return (0);
 }
