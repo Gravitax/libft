@@ -82,9 +82,10 @@ S_PRINT	=	ft_printf.c\
 
 S_STRING =	ft_abs.c\
 			ft_atof.c\
-			ft_atoi.c\
 			ft_atoi_base.c\
+			ft_atoi.c\
 			ft_intlen.c\
+			ft_itoa_base.c\
 			ft_itoa.c\
 			ft_mmapfile.c\
 			ft_readfile.c\

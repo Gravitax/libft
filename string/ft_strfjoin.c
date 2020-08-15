@@ -12,7 +12,7 @@
 
 #include "../libft.h"
 
-char			*ft_strfjoin(const char *s1, const char *s2, int choose)
+char			*ft_strfjoin(char const *s1, char const *s2, int choose)
 {
 	char	*new;
 

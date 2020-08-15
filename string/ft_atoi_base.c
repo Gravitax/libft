@@ -14,8 +14,8 @@
 
 static int		get_char_value(char c)
 {
-	int				i;
 	const char		*base = "0123456789abcdef";
+	int				i;
 
 	i = 0;
 	while (base[i])
@@ -42,7 +42,7 @@ long			ft_atoi_base(const char *str, unsigned int base)
 	while ((tmp = get_char_value(ft_tolower(str[i]))) != -1)
 	{
 		result = result * base + tmp;
-		i++;
+		++i;
 	}
 	return (result);
 }

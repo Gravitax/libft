@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   itoa_base.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maboye <maboye@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 15:37:28 by maboye            #+#    #+#             */
-/*   Updated: 2020/08/10 20:38:17 by maboye           ###   ########.fr       */
+/*   Created: 2019/08/21 13:36:44 by maboye            #+#    #+#             */
+/*   Updated: 2019/08/22 23:37:30 by maboye           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char			*ft_strjoin(char const *s1, char const *s2)
+static void		recursion(int nb, int b, char *str, int *i)
+{
+	const char	*base = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+	if (nb <= -b || b <= nb)
+		recursion(nb / b, b, str, i);
+	str[(*i)++] = base[ft_abs(nb % b)];
+}
+
+char			*ft_itoa_base(int nb, int base)
 {
 	char	*str;
+	int		i;
 
-	if (!s1)
-		return (ft_strdup((char *)s2));
-	if (!s2)
-		return (ft_strdup((char *)s1));
-	if (!s1 && !s2)
+	if (base < 2 || base > 36)
 		return (NULL);
-	if (!(str = (char *)ft_memalloc(sizeof(char)
-		* (ft_strlen(s1) + ft_strlen(s2) + 1))))
+	if (!(str = (char *)ft_memalloc(sizeof(char) * 32)))
 		return (NULL);
-	str = ft_strcpy(str, s1);
-	str = ft_strcat(str, s2);
+	i = 0;
+	if (nb < 0)
+		str[i++] = '-';
+	recursion(nb, base, str, &i);
 	return (str);
 }
