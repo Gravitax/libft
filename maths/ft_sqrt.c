@@ -17,7 +17,6 @@ float			ft_sqrt(float nb)
 
 	if (nb <= 1)
 		return (nb == 1 ? 1 : 0);
-	nb = (float)nb;
 	n = 1;
 	i = 23;
 	while (--i)
