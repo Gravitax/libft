@@ -16,7 +16,7 @@ char			*ft_strdup(const char *src)
 {
 	char	*new;
 
-	if (!(new = (char *)ft_memalloc(sizeof(char) * (ft_strlen(src) + 1))))
+	if (!src || !(new = (char *)ft_memalloc(sizeof(char) * (ft_strlen(src) + 1))))
 		return (NULL);
 	ft_strcpy(new, src);
 	return (new);
